@@ -1,16 +1,19 @@
-import { useState } from 'react';
 import './App.css';
 import { University } from './example/components/university';
-import Modal from 'react-modal';
-
-// Modal.setAppElement('#App');
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { RequestVacation } from './pages/request-vacation.page';
+import { NotFound } from './pages/not-found';
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
-      <University />
+      <Router>
+        <Routes>
+          <Route path="/" element={<University />} />
+          <Route path="/request-vacation" element={<RequestVacation />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Router>
     </>
   );
 }
